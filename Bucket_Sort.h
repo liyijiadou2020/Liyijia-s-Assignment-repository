@@ -8,7 +8,7 @@ using namespace std;
 void BucketSort(int* arr, int len);
 void SelectSort(vector<int>& v);
 
-//External interfaceq
+//External interfaceqeeeeeeeeeee
 void BucketSort(int* arr, int len)
 {
 	//initialize vector
