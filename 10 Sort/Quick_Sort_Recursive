@@ -1,0 +1,40 @@
+
+//研究!!!
+//Wikey
+//递归法
+template<class T>
+void Quick_Sort_Recursive(T arr[], int start,int end)
+{
+	if (start = end)		//底层递归终止条件:start=end
+		return;
+	/* 指针初始化,将arr分为[left,right-1]和[right,end]两半 */
+	T mid = arr[end];		//选择arr[end]作为 基准(pivot)		
+	int left = start;		
+	int right = end - 1;
+	/* 在整个范围内搜寻比 mid 小的元素,然后将左侧元素与右侧元素交换
+	*  1.在[left,right-1]中找到比mid大的数
+	*  2.在[right,end]中找到比mid小的数
+	*  3.交换元素
+	*/
+	while (left<right)	// 整个[left,right]范围
+	{
+		while (arr[left] < mid && left < right)		//arr[left]>mid
+			left++;
+		while (arr[right] >= mid && left < right)	//arr[right]<mid
+			right--;
+		std::swap(arr[left], arr[right]);
+	}
+	if (arr[left] >= arr[end])	//左侧的最后一个数与pivot比较,如果小的元素在前面,那么把小的元素换到后面去
+		std::swap(arr[left, right]);
+	else                        //如果小元素在前,那么把left + 1
+		left++;
+	Quick_Sort_Recursive(arr, start, left - 1);
+	Quick_Sort_Recursive(arr, left + 1, end);
+}
+
+//外部接口
+template<class T>
+void Quick_Sort(T arr[], int len)
+{
+	Quick_Sort_Recursive(arr, 0, len - 1);
+}

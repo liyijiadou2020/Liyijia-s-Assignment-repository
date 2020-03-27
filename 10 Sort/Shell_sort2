@@ -1,0 +1,20 @@
+
+void Shell_sort2(int a[], int n)
+{
+	for (int gap = n / 2; gap > 0; gap /= 2)
+	{
+		for (int j = gap; j < n; j++)	//Array strats from a[gap]
+		{
+			if (a[j] < a[j - gap]) {	//Each element compare with elements from its group
+				int temp = a[j];
+				int k = j - gap;
+				while (k >= 0 && a[k] > temp)
+				{
+					a[k + gap] = a[k];
+					k -= gap;
+				}
+				a[k + gap] = temp;
+			}
+		}
+	}
+}

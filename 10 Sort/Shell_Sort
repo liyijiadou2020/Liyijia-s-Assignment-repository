@@ -1,0 +1,20 @@
+
+
+template<class T>
+void Shell_Sort(T arr[], int len)
+{
+	int h = 1;
+	while (h < len / 2) {	//用来取一开始的最大增量
+		h *= 2;
+	}
+	while (h >= 1) {			//只要增量>=1就一直循环
+		for (int i = h; i < len; i++)	//分组
+		{
+			for (int j = i; j >= h && arr[j] < arr[j - h]; j -= h) //组内排序
+			{
+				std::swap(arr[j], arr[j - h]);
+			}
+		}
+		h /= 2;	//组内完成排序后再取更小的增量
+	}
+}

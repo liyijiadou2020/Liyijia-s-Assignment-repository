@@ -1,0 +1,19 @@
+
+//Bubble_Sort
+template<class T>
+void Bubble_Sort(T Array[], int N)
+{
+	for (int p = N-1; p>=0 ; p--)		//最多要进行N-1轮冒泡
+	{
+		bool hasSwaped=false;			//flag是一个标记,当数组已经完全有序时 == 没有交换 == flag=0
+		for (int i = 0; i < p; i++)		/* 一趟冒泡 */  //从第一个数一直向第p - 1个数冒泡
+		{
+			if (Array[i]>Array[i+1]){	//如果当前数比它后面一个数要大,那么把它换到后面去
+				Swap(Array[i], Array[i + 1]);
+				hasSwaped = true;		//每次交换将Flag置1
+			}
+		}
+		if (!hasSwaped)					//If the array has not been swaped anymore, then it is sorted , break , end sorting.
+			break;
+	}
+}
